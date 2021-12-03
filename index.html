@@ -5,11 +5,6 @@
    <meta charset="UTF-8">
    <link rel="stylesheet" href="style.css">
    <script src="https://kit.fontawesome.com/1fffca51be.js" crossorigin="anonymous"></script>
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link
-      href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@900&family=Nanum+Gothic+Coding:wght@400;700&display=swap"
-      rel="stylesheet">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>AlexCodes | Web_dev Portfolio</title>
@@ -17,7 +12,8 @@
 
 <body>
    <div class="loader">
-      <img src="img/logo AlexCodes picture.svg" alt="" class="loader-img">
+      <img src="img/logo letters.svg" alt="" class="loader-img">
+      <div class="loader-line"></div>
    </div>
    <div class="page-layout closed">
       <header class="header">
@@ -51,6 +47,25 @@
                FrontEnd - Developer 👨🏻‍💻
             </h2>
             <button type="button" class="about-order-btn">Contact Me</button>
+            <div id="myModal" class="modal">
+               <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <form action="#" class="modal-form">
+                     <h3 class="modal-title">Leave your message here</h3>
+                     <label for="info-name" class="form-label">Your Name</label>
+                     <input type="text" name="info-name" placeholder="John Doe" class="form-input" id="info-name"
+                        required pattern="[A-Za-z]+">
+                     <label for=" email" class="form-label">Your Email</label>
+                     <input type="email" name="email" placeholder="example@example.com" class="form-input" id="email"
+                        required>
+                     <label for="textbox" class="form-label">Your message</label>
+                     <textarea name="textbox" placeholder="Type your message here..." class="form-input" id="textbox"
+                        cols="30" rows="10">
+                     </textarea>
+                     <button type="button" class="form-btn">Send</button>
+                  </form>
+               </div>
+            </div>
          </div>
          <img src="img/logo picture ver4.png" alt="Face Logo in yellow lines." class="about-logo">
       </section>
@@ -105,33 +120,33 @@
                </a>
             </div>
          </div>
-         <span class="portfolio-after">To be continued...</span>
       </section>
 
       <section class="contact" id="contact">
          <h2 class="contact-title">Find me in Web --></h2>
          <div class="contact-grid">
-            <a target="_blank" href="https://www.linkedin.com/in/oleksandr-hlushakov-0483b6161/" class="contact-link">
+            <a target="_blank" href="https://www.linkedin.com/in/oleksandr-hlushakov-0483b6161/" class="contact-link"
+               id="linkedin">
                <img align="left" alt="linked-in"
                   src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" />
             </a>
-            <a target="_blank" href="https://www.instagram.com/alexcodes.official/" class="contact-link">
+            <a target="_blank" href="https://www.instagram.com/alexcodes.official/" class="contact-link" id="instagram">
                <img align="left" alt="instagram"
                   src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
             </a>
-            <a target="_blank" href="mailto: alex1glushakov@gmail.com" class="contact-link">
+            <a target="_blank" href="mailto: alex1glushakov@gmail.com" class="contact-link" id="gmail">
                <img align="left" alt="gmail"
                   src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
             </a>
-            <a target="_blank" href="https://codepen.io/Alex10023" class="contact-link">
+            <a target="_blank" href="https://codepen.io/Alex10023" class="contact-link" id="codepen">
                <img align="left" alt="codepen"
                   src="https://img.shields.io/badge/Codepen-000000?style=for-the-badge&logo=codepen&logoColor=white" />
             </a>
-            <a target="_blank" href="https://t.me/AlexCodes_official" class="contact-link">
+            <a target="_blank" href="https://t.me/AlexCodes_official" class="contact-link" id="telegram">
                <img align="left" alt="telegram"
                   src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" />
             </a>
-            <a target="_blank" href="https://github.com/AlexHlushakov" class="contact-link">
+            <a target="_blank" href="https://github.com/AlexHlushakov" class="contact-link" id="github">
                <img align="left" alt="github"
                   src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
             </a>

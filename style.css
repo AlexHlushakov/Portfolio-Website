@@ -1,11 +1,4 @@
 @font-face {
-   font-family: "BTTF";
-   src: url("fonts/BTTF.ttf") format("truetype");
-   font-style: normal;
-   font-weight: normal;
-}
-
-@font-face {
    font-family: "Bank Gothic";
    src: url("fonts/BankGothicBT-Medium.ttf") format("truetype");
    font-style: normal;
@@ -21,6 +14,17 @@
 }
 html {
    scroll-behavior: smooth;
+}
+
+button {
+   font-family: "Bank Gothic", sans-serif;
+   text-transform: uppercase;
+}
+
+input,
+select,
+textarea {
+   font-family: "Bank Gothic", sans-serif;
 }
 
 a {
@@ -64,21 +68,23 @@ a {
    }
 }
 
-@keyframes splashing {
+@keyframes width-opacity {
    0% {
       opacity: 0;
-   }
-   25% {
-      opacity: 1;
-   }
-   50% {
-      opacity: 0;
-   }
-   75% {
-      opacity: 1;
+      width: 5%;
    }
    100% {
-      opacity: 0;
+      opacity: 1;
+      width: 100%;
+   }
+}
+
+@keyframes width-change {
+   0% {
+      width: 5%;
+   }
+   100% {
+      width: 100%;
    }
 }
 
@@ -91,22 +97,34 @@ body {
 .loader {
    height: 100vh;
    width: 100vw;
-   background: #090247;
+   background: #010008;
    display: flex;
+   flex-direction: column;
+   justify-content: center;
    align-items: center;
 }
 
 .loader-img {
-   animation: 3s ease-out 0s 4 splashing;
+   animation: 5s ease-out width-opacity;
    margin: 0 auto;
-   max-width: 350px;
-   width: 80%;
+   max-width: 600px;
    height: auto;
+}
+
+.loader-line {
+   background-color: #1e05ff;
+   display: block;
+   height: 3px;
+   margin-top: 15px;
+   max-width: 600px;
+   animation: width-change 3.5s 1.5s ease-out;
 }
 
 .page-layout {
    display: flex;
    flex-direction: column;
+   width: 100vw;
+   overflow-x: hidden;
    background-image: linear-gradient(
       180deg,
       #0f0e0f 0%,
@@ -194,7 +212,9 @@ header {
 
 .menu {
    transition: all 1s ease-in-out;
-   background-color: #1504ad;
+   background-color: #010008;
+   border: 2px solid #1e05ff;
+   box-shadow: 0 0 -30px #1e05ff;
    height: 100vh;
    opacity: 0;
    padding: 15px;
@@ -218,31 +238,41 @@ header {
 .menu ul li a {
    color: #daff05;
    display: inline-block;
-   font-size: 20px;
-   padding: 8px 15px;
+   font-size: 36px;
+   padding: 20px 30px;
    position: relative;
    text-decoration: none;
    outline: none;
    transition: all 0.5s ease-in-out;
 }
 
-.menu ul li a:hover {
-   color: #fff;
-   transform: scale(1.2);
+.menu ul li a::after {
+   background-color: #1e05ff;
+   display: block;
+   content: "";
+   height: 3px;
+   margin-top: 2px;
+   width: 0%;
+   -webkit-transition: width 0.5s ease-in-out;
+   -moz--transition: width 0.5s ease-in-out;
+   transition: width 0.5s ease-in-out;
 }
 
-.menu ul li span {
-   display: inline-block;
-   height: 24px;
-   top: 5px;
-   position: relative;
-   width: 24px;
+.menu ul li a:hover {
+   transform: scale(1.1);
+}
+
+.menu ul li a:hover::after,
+.menu ul li a:focus::after {
+   width: 100%;
 }
 
 .menu img {
    position: absolute;
-   width: 35rem;
-   right: 8rem;
+   max-width: 32rem;
+   width: 100%;
+   height: auto;
+   right: 6rem;
    top: 14rem;
 }
 
@@ -251,9 +281,9 @@ header {
    transform: translateY(0);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 940px) {
    .menu ul {
-      margin: 13rem 6rem;
+      margin: 13rem 8rem;
    }
 
    .menu ul li a {
@@ -262,17 +292,31 @@ header {
    }
 }
 
+@media (min-width: 1600px) {
+   .menu ul {
+      margin: 13rem 20rem;
+   }
+   .menu img {
+      right: 20rem;
+   }
+}
+
 .about {
    display: flex;
    justify-content: space-between;
    align-items: center;
-   height: 100vh;
-   padding: 0 7rem 5rem 7rem;
+   max-width: 1440px;
+   width: 100%;
+   max-height: 100vh;
+   padding: 5rem 7rem 5rem 7rem;
+   margin: 0 auto;
 }
 
 .about-logo {
    animation: 1s ease-out 0s 1 slideInRight;
-   width: 30rem;
+   max-width: 30rem;
+   width: 100%;
+   height: auto;
    opacity: 0.9;
    border: 2px solid #1e05ff;
    box-shadow: 0 0 30px #1e05ff;
@@ -318,7 +362,6 @@ header {
    width: 100%;
    height: 100%;
    mix-blend-mode: multiply;
-   /*background-image: repeating-linear-gradient(45deg, #0ff707, #fd0037 1em, rgb(3, 28, 250) 1em, #d309ee 50%);*/
    background-image: repeating-linear-gradient(45deg, #daff05 0%, #fd0037 25%, #1e05ff 1em, #1cee09 50%);
 
    background-size: 4em 4em;
@@ -345,7 +388,7 @@ header {
    border: 1px solid #daff05;
    color: #000;
    border-radius: 20px;
-   font-size: 1.2rem;
+   font-size: 1rem;
    font-weight: 500;
    padding: 0.5rem;
    cursor: pointer;
@@ -353,9 +396,92 @@ header {
 }
 
 .about-order-btn:hover {
-   transform: scale(1.2);
-   background: #1e05ff;
-   color: #fff;
+   transform: scale(1.1);
+   border: 2px solid #1e05ff;
+   box-shadow: 0 0 30px #1e05ff;
+}
+
+.modal {
+   display: none; /* Hidden by default */
+   position: fixed; /* Stay in place */
+   z-index: 1; /* Sit on top */
+   left: 0;
+   top: 0;
+   width: 100vw; /* Full width */
+   height: 100vh; /* Full height */
+   overflow: auto; /* Enable scroll if needed */
+   background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Modal Content/Box */
+.modal-content {
+   position: relative;
+   margin: 15vh auto;
+   background-color: #010008;
+   padding: 40px;
+   border: 1px solid #1e05ff;
+   box-shadow: 0 0 30px #1e05ff;
+   width: 40%;
+   border-radius: 10px;
+}
+
+.modal-form {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+}
+
+.modal-title {
+   font-size: 2rem;
+}
+
+.form-label {
+   padding-top: 20px;
+   padding-bottom: 5px;
+   font-size: 1.2rem;
+}
+
+.form-input {
+   font-size: 1rem;
+   border-radius: 5px;
+   padding: 5px;
+   color: #000;
+}
+
+.form-btn {
+   height: 50px;
+   width: 100%;
+   margin: 20px auto 0 auto;
+   background-color: #daff05;
+   color: #000;
+   font-size: 1.2rem;
+   border: 2px solid #fff;
+   border-radius: 10px;
+   transition: all 0.3s ease-in-out;
+}
+
+.form-btn:hover {
+   box-shadow: 0 0 30px #1e05ff;
+   border: 2px solid #1e05ff;
+   transform: scale(0.98);
+}
+
+/* The Close Button */
+.close {
+   position: absolute;
+   right: 10px;
+   top: 10px;
+   color: #aaa;
+   float: right;
+   font-size: 28px;
+   font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+   color: black;
+   text-decoration: none;
+   cursor: pointer;
 }
 
 .portfolio {
@@ -364,6 +490,9 @@ header {
    display: flex;
    flex-direction: column;
    align-items: center;
+   max-width: 2000px;
+   width: 100%;
+   margin: 0 auto;
 }
 
 .works-category {
@@ -423,7 +552,6 @@ header {
 .website-desc,
 .js-item-desc {
    padding: 10px;
-   margin-top: -10px;
    font-size: 1.2rem;
    color: #daff05;
 }
@@ -435,14 +563,6 @@ header {
    padding: 0.5rem 0;
 }
 
-.portfolio-after {
-   margin-top: 4rem;
-   font-size: 1.5rem;
-   color: #daff05;
-   text-transform: uppercase;
-   font-family: "BTTF", sans-serif;
-}
-
 .contact {
    display: flex;
    flex-direction: column;
@@ -450,6 +570,9 @@ header {
    overflow: hidden;
    padding: 4rem 7rem;
    text-align: center;
+   max-width: 1680px;
+   width: 100%;
+   margin: 0 auto;
 }
 
 .contact-title {
@@ -467,20 +590,37 @@ header {
    margin-bottom: 3rem;
 }
 
-.contact-grid a img {
-   height: 35px;
+.contact-grid a {
    box-shadow: 0 0 20px #1e05ff;
    border: 1px solid #daff05;
    transition: all 0.5s ease-in-out;
 }
 
-.contact-grid a img:hover {
+.contact-grid a img {
+   height: 40px;
+   width: 120px;
+}
+
+#linkedin {
+   background-color: #0077b5;
+}
+
+#instagram {
+   background-color: #e4405f;
+}
+
+#telegram {
+   background-color: #2ca5e0;
+}
+
+.contact-grid a:hover {
    transform: scale(1.1);
    box-shadow: 0 0 50px #1e05ff;
 }
 
 footer {
    display: grid;
+   width: 100%;
    background-color: #1b1821;
    grid-template-columns: 5fr 1fr 1fr;
    padding: 1.5rem 3rem;
@@ -540,4 +680,174 @@ footer {
 
 .fab {
    font-size: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+   .menu img {
+      max-width: 28rem;
+      top: 15rem;
+   }
+   .about {
+      padding: 0 3rem 4rem 3rem;
+   }
+   .contact {
+      padding: 4rem;
+   }
+   .contact-grid {
+      width: 100%;
+   }
+}
+
+@media (max-width: 939px) {
+   .menu ul {
+      margin: 14rem 0rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   }
+   .menu img {
+      display: none;
+   }
+   .about {
+      flex-direction: column-reverse;
+      margin: 5rem 4rem;
+      padding: 0;
+      justify-content: auto;
+      width: auto;
+   }
+   .about-logo {
+      margin-bottom: 4rem;
+   }
+
+   .about-text {
+      align-items: center;
+   }
+
+   .modal-content {
+      width: 70%;
+   }
+   .portfolio {
+      margin: 6rem 4rem 1rem 4rem;
+      padding: 0;
+      width: auto;
+   }
+   .works-websites,
+   .works-js {
+      grid-template-columns: repeat(1, 1fr);
+      padding: 10px;
+      column-gap: 0px;
+   }
+   .portfolio-before {
+      text-align: center;
+   }
+   .contact-title {
+      margin-bottom: 4rem;
+   }
+   .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      justify-content: space-around;
+      justify-items: center;
+      align-self: center;
+      margin-bottom: 0rem;
+   }
+   .contact-link {
+      margin: 10px;
+   }
+
+   footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 1.5rem 1rem;
+   }
+   .copyright {
+      font-size: 0.8rem;
+   }
+   .bottom-nav {
+      padding: 0 2rem;
+   }
+   .bottom-nav-link {
+      padding: 0 1rem;
+      font-size: 1rem;
+   }
+   .bottom-social {
+      padding-right: 0;
+   }
+   .fab {
+      font-size: 1.2rem;
+   }
+}
+
+@media (max-width: 625px) {
+   .about-text-logo {
+      font-size: 3rem;
+   }
+   .about-after-logo {
+      font-size: 1rem;
+   }
+   .modal-title {
+      font-size: 1.2rem;
+   }
+   .form-label {
+      font-size: 1rem;
+   }
+   .form-input {
+      font-size: 0.8rem;
+   }
+   .contact-title {
+      font-size: 2rem;
+   }
+   .bottom-nav {
+      display: none;
+   }
+}
+
+@media (max-width: 450px) {
+   .modal-content {
+      padding: 40px 20px;
+   }
+   .contact-title {
+      font-size: 1.5rem;
+   }
+   .portfolio {
+      margin: 4rem 2rem 1rem 2rem;
+   }
+   .portfolio-before {
+      font-size: 1.2rem;
+   }
+   .works-category {
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 0;
+      margin: 10px 0;
+   }
+   .website-desc,
+   .js-item-desc {
+      font-size: 0.8rem;
+      text-align: center;
+   }
+   .contact {
+      padding: 4rem 2rem;
+   }
+   .contact-title {
+      margin-bottom: 2rem;
+   }
+   .contact-grid {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+   }
+}
+
+@media (max-width: 300px) {
+   .about-logo {
+      margin-bottom: 2rem;
+   }
+   .about-text-logo {
+      font-size: 2.5rem;
+   }
+   .about-after-logo {
+      font-size: 0.9rem;
+   }
 }
