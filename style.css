@@ -127,7 +127,7 @@ body {
    overflow-x: hidden;
    background-image: linear-gradient(
       180deg,
-     #000 0%,
+      #000 0%,
       #000 15%,
       #100664 20%,
       #000 25%,
@@ -265,6 +265,10 @@ header {
 .menu ul li a:hover::after,
 .menu ul li a:focus::after {
    width: 100%;
+}
+
+.cv{
+   color: #fff !important;
 }
 
 .menu img {
@@ -522,6 +526,12 @@ header {
    opacity: 0;
    transform: scale(1.2);
    transition: all 0.8s ease-in-out;
+}
+
+.react{
+   padding: 30px;
+   padding-top: 50px;
+   font-size: 20px;
 }
 
 .contact-link {
@@ -804,6 +814,10 @@ footer {
 }
 
 @media (max-width: 450px) {
+   .loader-img,
+   .loader-line {
+      max-width: 300px;
+   }
    .modal-content {
       padding: 40px 20px;
    }
@@ -841,6 +855,10 @@ footer {
 }
 
 @media (max-width: 300px) {
+   .loader-img,
+   .loader-line {
+      max-width: 260px;
+   }
    .about-logo {
       margin-bottom: 2rem;
    }
