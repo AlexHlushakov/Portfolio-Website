@@ -534,6 +534,15 @@ header {
    font-size: 20px;
 }
 
+.works-react {
+   padding: 20px;
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: 1fr;
+   column-gap: 20px;
+   row-gap: 20px;
+}
+
 .contact-link {
    opacity: 0;
    transform: scale(1.2);
