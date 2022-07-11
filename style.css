@@ -528,21 +528,6 @@ header {
    transition: all 0.8s ease-in-out;
 }
 
-.react{
-   padding: 30px;
-   padding-top: 50px;
-   font-size: 20px;
-}
-
-.works-react {
-   padding: 20px;
-   display: grid;
-   grid-template-columns: 1fr;
-   grid-template-rows: 1fr;
-   column-gap: 20px;
-   row-gap: 20px;
-}
-
 .contact-link {
    opacity: 0;
    transform: scale(1.2);
@@ -560,7 +545,7 @@ header {
 }
 
 .website-img,
-.js-item-image {
+.js-item-image{
    max-width: 100%;
    height: auto;
    border-radius: 10px;
@@ -569,10 +554,14 @@ header {
 }
 
 .website-desc,
-.js-item-desc {
+.js-item-desc{
    padding: 10px;
    font-size: 1.2rem;
    color: #daff05;
+}
+
+.js-item-github{
+   display: inline-block;
 }
 
 .portfolio-before {
@@ -751,7 +740,7 @@ footer {
       width: auto;
    }
    .works-websites,
-   .works-js {
+   .works-js{
       grid-template-columns: repeat(1, 1fr);
       padding: 10px;
       column-gap: 0px;
@@ -846,7 +835,7 @@ footer {
       margin: 10px 0;
    }
    .website-desc,
-   .js-item-desc {
+   .js-item-desc{
       font-size: 0.8rem;
       text-align: center;
    }
